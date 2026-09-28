@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Word manifest template. scripts/generateManifests.ts substitutes these
+  deployment tokens from environment variables before the manifest is sideloaded.
+-->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xsi:type="TaskPaneApp">
+  <Id>{{ ADDIN_ID }}</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>{{ PROVIDER_NAME }}</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="{{ DEPLOYMENT_DISPLAY_NAME }}"/>
+  <Description DefaultValue="Patent application workspace for Word."/>
+  <IconUrl DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-32x32.png"/>
+  <HighResolutionIconUrl DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-80x80.png"/>
+  <SupportUrl DefaultValue="{{ DEPLOYMENT_ORIGIN }}/word"/>
+  <AppDomains>
+    <AppDomain>{{ DEPLOYMENT_ORIGIN }}</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="{{ DEPLOYMENT_ORIGIN }}/word"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="FoleyWorksWordGroup">
+                <Label resid="Group.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="FoleyWorksWordOpenPane">
+                  <Label resid="OpenPane.Label"/>
+                  <Supertip>
+                    <Title resid="OpenPane.Label"/>
+                    <Description resid="OpenPane.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>FoleyWorksWordTaskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-16x16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-32x32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-80x80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/word"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/word"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="{{ DEPLOYMENT_DISPLAY_NAME }} is ready"/>
+        <bt:String id="Group.Label" DefaultValue="{{ DEPLOYMENT_DISPLAY_NAME }}"/>
+        <bt:String id="OpenPane.Label" DefaultValue="Open {{ DEPLOYMENT_DISPLAY_NAME }}"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Search patent applications and add references to your document."/>
+        <bt:String id="OpenPane.Tooltip" DefaultValue="Open the patent application workspace."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

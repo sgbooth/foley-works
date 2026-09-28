@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Outlook manifest template. scripts/generateManifests.ts substitutes these
+  deployment tokens from environment variables before the manifest is sideloaded.
+-->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xsi:type="MailApp">
+  <Id>{{ ADDIN_ID }}</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>{{ PROVIDER_NAME }}</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="{{ DEPLOYMENT_DISPLAY_NAME }}"/>
+  <Description DefaultValue="Patent application workspace for Outlook."/>
+  <IconUrl DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-32x32.png"/>
+  <HighResolutionIconUrl DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-80x80.png"/>
+  <SupportUrl DefaultValue="{{ DEPLOYMENT_ORIGIN }}/outlook"/>
+  <AppDomains>
+    <AppDomain>{{ DEPLOYMENT_ORIGIN }}</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.5"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="{{ DEPLOYMENT_ORIGIN }}/outlook"/>
+        <RequestedHeight>350</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.5">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="FoleyWorksOutlookGroup">
+                <Label resid="Group.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="FoleyWorksOutlookOpenPane">
+                  <Label resid="OpenPane.Label"/>
+                  <Supertip>
+                    <Title resid="OpenPane.Label"/>
+                    <Description resid="OpenPane.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-16x16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-32x32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/logo-80x80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="{{ DEPLOYMENT_ORIGIN }}/outlook"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Group.Label" DefaultValue="{{ DEPLOYMENT_DISPLAY_NAME }}"/>
+        <bt:String id="OpenPane.Label" DefaultValue="Open {{ DEPLOYMENT_DISPLAY_NAME }}"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="OpenPane.Tooltip" DefaultValue="Open the patent application workspace."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Foley Works Demo",
+  "version": "0.1.0",
+  "identifier": "works.foley.demo",
+  "build": { "beforeDevCommand": "npm run dev --prefix ..", "devUrl": "http://localhost:5173", "frontendDist": "../../dist/web" },
+  "app": { "windows": [{ "title": "Foley Works", "width": 1440, "height": 960 }] },
+  "bundle": { "active": false }
+}

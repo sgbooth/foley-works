@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+
+			<defs>
+				<clipPath id="clip-shape">
+					<path d="M 256,0 C 51.2,0 0,51.2 0,256 C 0,460.8 51.2,512 256,512 C 460.8,512 512,460.8 512,256 C 512,51.2 460.8,0 256,0 Z" />
+				</clipPath>
+			</defs>
+
+		<defs>
+
+		</defs>
+        <g clip-path="url(#clip-shape)">
+
+            <defs>
+                <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#833ab4" /><stop offset="50%" stop-color="#fd1d1d" /><stop offset="100%" stop-color="#fcb045" />
+                </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#bg-grad)" />
+
+
+            <g transform="translate(256, 256) scale(20, 20) rotate(0) translate(-12, -12)" opacity="1" style="mix-blend-mode: lighten" >
+			<title xmlns="http://www.w3.org/2000/svg" fill="#ffffff">solar:atom-bold-duotone</title>
+<g xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><path d="M7.52918 7.52921C12.4678 2.59058 18.4729 0.588267 20.9423 3.05753C23.4116 5.52686 21.4092 11.5329 16.4706 16.4716C11.532 21.4099 5.52675 23.4115 3.0575 20.9423C0.588288 18.4729 2.59058 12.4678 7.52918 7.52921Z" opacity=".5" fill="#ffffff"/><path d="M3.05756 3.05756C5.52689 0.588236 11.532 2.59058 16.4706 7.52924C21.4093 12.4679 23.4116 18.473 20.9423 20.9423C18.473 23.4117 12.4679 21.4093 7.52924 16.4706C2.59059 11.532 0.588233 5.5269 3.05756 3.05756Z" opacity=".5" fill="#ffffff"/><path d="M12 9.5C13.3807 9.5 14.5 10.6193 14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5Z" fill="#ffffff"/></g>
+		</g>
+
+        </g>
+    </svg>

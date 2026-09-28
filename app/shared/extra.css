@@ -1,0 +1,60 @@
+/* Dockview overrides use Mantine theme tokens so the theme remains the color source. */
+.dockview-theme-light {
+  --dv-tabs-and-actions-container-background-color: var(--mantine-color-gray-1);
+  --dv-activegroup-visiblepanel-tab-background-color: var(--mantine-color-body);
+  --dv-activegroup-hiddenpanel-tab-background-color: var(--mantine-color-gray-3);
+  --dv-inactivegroup-visiblepanel-tab-background-color: var(--mantine-color-body);
+  --dv-inactivegroup-hiddenpanel-tab-background-color: var(--mantine-color-gray-2);
+  --dv-tab-divider-color: transparent;
+  --dv-tabs-and-actions-container-height: 30px;
+}
+
+/* The saturated themed strip and translucent pattern keep the tabs easy to distinguish. */
+.dockview-theme-light .dv-tabs-and-actions-container {
+  background-color: var(--mantine-primary-color-8);
+  background-image:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--mantine-color-white) 7%, transparent) 50%,
+      transparent 50%
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--mantine-color-white) 13%, transparent) 50%,
+      transparent 50%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 50%,
+      color-mix(in srgb, var(--mantine-color-white) 17%, transparent) 50%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 50%,
+      color-mix(in srgb, var(--mantine-color-white) 19%, transparent) 50%
+    );
+  background-size: 13px, 29px, 37px, 53px;
+  border-bottom: 1px solid var(--mantine-color-default-border);
+}
+
+.dockview-theme-light .dv-tabs-container .dv-tab {
+  border: 1px solid var(--mantine-color-default-border);
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
+  margin: 2px 0 0;
+  padding: 2px 6px;
+}
+
+.dockview-theme-light .dv-tabs-container .dv-tab.dv-active-tab {
+  border-color: var(--mantine-primary-color-6);
+  box-shadow:
+    inset 1px 0 0 var(--mantine-primary-color-6),
+    inset 0 1px 0 var(--mantine-primary-color-6),
+    inset -1px 0 0 var(--mantine-primary-color-6);
+  font-weight: 700;
+}
+
+.dockview-theme-light .dv-tabs-container .dv-tab.dv-inactive-tab {
+  color: var(--mantine-color-gray-7);
+  font-weight: 400;
+}
